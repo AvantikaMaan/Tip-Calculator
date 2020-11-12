@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        body {
+            background: #28cf5a;
+            font-size: 12px;
+        }
+
+        body,
+        button,
+        input {
+            font-family: 'Righteous', cursive;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+        }
+
+        .background {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .container {
+            flex: 0 1 700px;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .screen {
+            position: relative;
+            background: #110101;
+            border-radius: 25px;
+        }
+
+        .screen:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 20px;
+            right: 20px;
+            bottom: 0;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(121, 74, 74, 0.4);
+            z-index: -1;
+        }
+
+        .screen-body {
+            display: flex;
+        }
+
+        .screen-body-item {
+            flex: 1;
+            padding: 50px;
+        }
+
+        .screen-body-item.left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .app-title {
+            display: flex;
+            /*flex-direction: column;*/
+            justify-content: center;
+            align-items: center;
+            color: #d1e0c6;
+            f;
+            font-size: 26px;
+            text-transform: uppercase;
+            border-left: 4px solid #28cf5a;
+            padding: 10px;
+        }
+
+        .app-form-group {
+            margin-bottom: 15px;
+        }
+
+        .app-form-group.buttons {
+            margin-bottom: 0;
+            text-align: right;
+        }
+
+        .app-form-control {
+            width: 100%;
+            padding: 10px 0;
+            background: none;
+            border: none;
+            border-bottom: 1px solid #666;
+            color: #ddd;
+            font-size: 14px;
+            text-transform: uppercase;
+            outline: none;
+            transition: border-color .2s;
+        }
+
+        .app-form-control::placeholder {
+            color: #FFF;
+        }
+
+        .app-form-control:focus {
+            border-bottom-color: #ddd;
+        }
+
+        .app-form-button {
+            background: none;
+            border: none;
+            color: #28cf5a;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+            text-transform: uppercase;
+        }
+
+        .app-form-button:hover {
+            color: #218c74;
+        }
+
+        .showdata {
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            padding-top: -10px;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="container">
+            <div class="screen">
+                <div class="screen-body">
+                    <div class="screen-body-item left">
+                        <div class="app-title">
+                            <div class="animated infinite pulse">
+                                GrapeCity <br> Tip <br> Calculator
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screen-body-item">
+                        <div class="app-form">
+                            <div class="app-form-group">
+                                <input type="text" class="app-form-control" placeholder="Bill" id="bill">
+                            </div>
+                            <div class="app-form-group">
+                                <input type="number" class="app-form-control" placeholder="Tip %" id="tip">
+                            </div>
+                            <div class="app-form-group">
+                                <input type="number" class="app-form-control" placeholder="Number of people" id="nop">
+                            </div>
+                            <div>
+                                <input type="button" name="" value="show Tip per person" class="app-form-button"
+                                    onclick="calcy()">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="app-form-group showdata">
+                    <p id="showData"> </p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            function calcy() {
+                let bill = document.getElementById('bill').value;
+                let tip = document.getElementById('tip').value;
+                let nop = document.getElementById('nop').value;
+                bill = parseFloat(bill);
+                tip = parseFloat(tip);
+                nop = parseFloat(nop);
+
+                if (isNaN(bill) || isNaN(tip) || isNaN(nop)) {
+                    alert('Please check the fields again. These fields only accepts Numeric Value.');
+                    document.getElementById("bill").focus(this);
+                }
+            
+                else {
+
+                let billShare = parseFloat(bill) / parseFloat(nop);
+
+                let tipPerPerson = billShare * (parseFloat(tip) / 100);
+                alert(tipPerPerson);
+
+                let totalPerPerson = billShare + tipPerPerson;
+                alert(totalPerPerson);
+
+                document.getElementById('showData').innerHTML = ` Tip per person :  ${tipPerPerson}$      Total per person is :  ${totalPerPerson}$. `
+            }
+
+
+            }
+
+
+        </script>
+
+</body>
+
+</html>
