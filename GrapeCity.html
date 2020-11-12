@@ -179,7 +179,7 @@
                 nop = parseFloat(nop);
 
                 if (isNaN(bill) || isNaN(tip) || isNaN(nop)) {
-                    alert('Please check the fields again. These fields only accepts Numeric Value.');
+                    alert('Please check the fields again. Enter Numeric Values Only.');
                     document.getElementById("bill").focus(this);
                 }
             
@@ -193,7 +193,7 @@
                 let totalPerPerson = billShare + tipPerPerson;
                 alert(totalPerPerson);
 
-                document.getElementById('showData').innerHTML = ` Tip per person :  $${tipPerPerson}      Total per person :  $${totalPerPerson}. `
+                document.getElementById('showData').innerHTML = ` Tip per person :  $${tipPerPerson}      Total per person :  $${totalPerPerson} `
             }
 
 
